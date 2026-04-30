@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Portfolio</title>
+    <title>Shep Digital Proof of Concept</title>
     <style>
         :root {
             --primary: #0f1419;
@@ -14,11 +15,7 @@
             --border: #2d3744;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
@@ -45,25 +42,18 @@
         }
 
         @keyframes fadeInLogo {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.95); }
+            to   { opacity: 1; transform: scale(1); }
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
@@ -74,46 +64,25 @@
             color: var(--highlight);
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--accent-subtle);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
         main {
             max-width: 1400px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        .projects {
-            display: grid;
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
+        .projects { display: grid; gap: 3rem; margin-bottom: 4rem; }
 
-        .project-group {
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .project-group:nth-child(1) { animation-delay: 0.1s; }
-        .project-group:nth-child(2) { animation-delay: 0.2s; }
-        .project-group:nth-child(3) { animation-delay: 0.3s; }
-        .project-group:nth-child(4) { animation-delay: 0.4s; }
-        .project-group:nth-child(5) { animation-delay: 0.5s; }
-        .project-group:nth-child(6) { animation-delay: 0.6s; }
+        .project-group { animation: fadeInUp 0.8s ease-out backwards; }
+        .project-group:nth-child(1)  { animation-delay: 0.05s; }
+        .project-group:nth-child(2)  { animation-delay: 0.10s; }
+        .project-group:nth-child(3)  { animation-delay: 0.15s; }
+        .project-group:nth-child(4)  { animation-delay: 0.20s; }
+        .project-group:nth-child(5)  { animation-delay: 0.25s; }
+        .project-group:nth-child(6)  { animation-delay: 0.30s; }
+        .project-group:nth-child(7)  { animation-delay: 0.35s; }
+        .project-group:nth-child(8)  { animation-delay: 0.40s; }
+        .project-group:nth-child(9)  { animation-delay: 0.45s; }
+        .project-group:nth-child(10) { animation-delay: 0.50s; }
 
         .org-title {
             font-size: 1.3rem;
@@ -126,19 +95,11 @@
             letter-spacing: 0.5px;
         }
 
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
+        /* Full-width single video */
+        .videos-grid-1 { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 
-        .single-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
+        /* Two side-by-side videos */
+        .videos-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 
         .video-card {
             background: var(--secondary);
@@ -148,90 +109,180 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            height: 100%;
+            cursor: pointer;
         }
 
         .video-card:hover {
             border-color: var(--accent);
-            background: linear-gradient(135deg, var(--secondary) 0%, rgba(255, 255, 255, 0.02) 100%);
             transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.35);
         }
 
-        .video-iframe-container {
+        .video-thumb {
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
             overflow: hidden;
-            background: var(--primary);
+            background: #080c10;
         }
 
-        /* Custom aspect ratios for wide/multi-screen formats */
-        .video-iframe-container.ratio-18 { padding-bottom: 18.47%; }
-        .video-iframe-container.ratio-27 { padding-bottom: 27.76%; }
-        .video-iframe-container.ratio-13 { padding-bottom: 13.82%; }
+        .video-thumb.ratio-16x9::after   { content:''; display:block; padding-bottom: 56.25%; }
+        .video-thumb.ratio-wide-2::after  { content:''; display:block; padding-bottom: 27.76%; }
+        .video-thumb.ratio-wide-3::after  { content:''; display:block; padding-bottom: 18.47%; }
+        .video-thumb.ratio-wide-4::after  { content:''; display:block; padding-bottom: 13.82%; }
 
-        .video-iframe-container iframe {
+        .thumb-inner {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thumb-inner img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+
+        .video-card:hover .thumb-inner img {
+            transform: scale(1.04);
+            opacity: 0.8;
+        }
+
+        .play-btn {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .play-btn svg {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.7));
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            opacity: 0.88;
+        }
+
+        .video-card:hover .play-btn svg {
+            transform: scale(1.14);
+            opacity: 1;
         }
 
         .video-info {
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem 1.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .video-title {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--highlight);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
             line-height: 1.3;
         }
 
-        .video-link {
+        .video-meta {
+            font-size: 0.82rem;
             color: var(--accent-subtle);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            transition: color 0.3s;
-            display: inline-block;
         }
 
-        .video-link:hover {
-            color: var(--accent);
+        .expand-hint {
+            margin-top: auto;
+            padding-top: 0.9rem;
+            border-top: 1px solid var(--border);
+            color: var(--accent-subtle);
+            font-size: 0.82rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── Lightbox ── */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.93);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            animation: lbFadeIn 0.22s ease;
+        }
+
+        @keyframes lbFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .lightbox-inner {
+            position: relative;
+            width: 100%;
+            max-width: 1280px;
+            animation: lbScale 0.22s ease;
+        }
+
+        @keyframes lbScale {
+            from { transform: scale(0.96); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+
+        .lightbox-frame {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 0;
+        }
+
+        .lightbox-frame iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -2.8rem;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .lightbox-close:hover { opacity: 1; }
+
+        .lightbox-title {
+            margin-top: 0.9rem;
+            text-align: center;
+            color: var(--accent-subtle);
+            font-size: 0.9rem;
+            letter-spacing: 0.4px;
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            header {
-                padding: 2rem 1rem;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            .videos-grid,
-            .two-column-feature {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-group {
-                margin-bottom: 2rem;
-            }
+            h1 { font-size: 2rem; }
+            header { padding: 2rem 1rem; }
+            main { padding: 2rem 1rem; }
+            .videos-grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+            .lightbox-overlay { padding: 1rem; }
+            .lightbox-close { top: -2.4rem; }
         }
 
         footer {
@@ -242,207 +293,242 @@
             font-size: 0.9rem;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-subtle);
-        }
-
-        .two-column-feature {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-subtle); }
     </style>
 </head>
 <body>
-    <header>
-        <img src="https://res.cloudinary.com/dvltssfeh/image/upload/v1767042498/BigHouse_K_gwkjgu.jpg" alt="Big House Logo" class="logo">
-        <h1>Big House Recent Work</h1>
-    </header>
 
-    <main>
-        <section class="projects">
+<header>
+    <img src="https://res.cloudinary.com/dvltssfeh/image/upload/v1767042498/BigHouse_K_gwkjgu.jpg" alt="Big House Logo" class="logo">
+    <h1>Shep Digital Proof of Concept</h1>
+</header>
 
-            <!-- Flatbreads -->
-            <div class="project-group">
-                <h2 class="org-title">Flatbreads</h2>
-                <div class="videos-grid">
-                    <div class="video-card">
-                        <div class="video-iframe-container ratio-18">
-                            <iframe
-                                src="https://player.vimeo.com/video/1142678908?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="Ashburnham_Flatbreads_3Screen_Bevel">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Flatbreads – 3 Screen</h3>
-                            <a href="https://vimeo.com/1142678908" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+<main>
+    <section class="projects">
+
+        <!-- 1. Flatbreads 3 Screen -->
+        <div class="project-group">
+            <h2 class="org-title">Flatbreads — 3 Screen</h2>
+            <div class="videos-grid-1">
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/1142678908?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Flatbreads — 3 Screen','ratio-wide-3')">
+                    <div class="video-thumb ratio-wide-3">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/1142678908.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
                     </div>
-
-                    <div class="video-card">
-                        <div class="video-iframe-container ratio-27">
-                            <iframe
-                                src="https://player.vimeo.com/video/1142678932?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="Alltown_Flatbreads_Menu_Board_2 Screen">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Flatbreads – 2 Screen</h3>
-                            <a href="https://vimeo.com/1142678932" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Flatbreads</h3>
+                        <span class="video-meta">3-Screen Layout</span>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Roast-to-Brew -->
-            <div class="project-group">
-                <h2 class="org-title">Roast-to-Brew</h2>
-                <div class="videos-grid">
-                    <div class="video-card">
-                        <div class="video-iframe-container">
-                            <iframe
-                                src="https://player.vimeo.com/video/332276581?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="Roast-to-Brew">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Roast-to-Brew</h3>
-                            <a href="https://vimeo.com/332276581" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+        <!-- 2. Flatbreads 2 Screen -->
+        <div class="project-group">
+            <h2 class="org-title">Flatbreads — 2 Screen</h2>
+            <div class="videos-grid-1">
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/1142678932?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Flatbreads — 2 Screen','ratio-wide-2')">
+                    <div class="video-thumb ratio-wide-2">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/1142678932.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
                     </div>
-
-                    <div class="video-card">
-                        <div class="video-iframe-container ratio-27">
-                            <iframe
-                                src="https://player.vimeo.com/video/332276817?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="AllTown Coffee Menu Board 2 Screen">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Roast-to-Brew – 2 Screen</h3>
-                            <a href="https://vimeo.com/332276817" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Flatbreads</h3>
+                        <span class="video-meta">2-Screen Layout</span>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- AllTown Menu Boards -->
-            <div class="project-group">
-                <h2 class="org-title">AllTown Menu Boards</h2>
-                <div class="videos-grid">
-                    <div class="video-card">
-                        <div class="video-iframe-container ratio-13">
-                            <iframe
-                                src="https://player.vimeo.com/video/332277737?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="AllTown Breakfast Menu Board 4Screen">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Breakfast Menu Board</h3>
-                            <a href="https://vimeo.com/332277737" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+        <!-- 3. Roast-to-Brew 2 Screen -->
+        <div class="project-group">
+            <h2 class="org-title">Roast-to-Brew — 2 Screen</h2>
+            <div class="videos-grid-1">
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332276817?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Roast-to-Brew — 2 Screen','ratio-wide-2')">
+                    <div class="video-thumb ratio-wide-2">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332276817.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
                     </div>
-
-                    <div class="video-card">
-                        <div class="video-iframe-container ratio-13">
-                            <iframe
-                                src="https://player.vimeo.com/video/332277046?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="AllTown Protein Menu Board 4 screens">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Protein Menu Board – 4 Screens</h3>
-                            <a href="https://vimeo.com/332277046" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Roast-to-Brew</h3>
+                        <span class="video-meta">2-Screen Layout</span>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Lunch Time & Pretzel Factory -->
-            <div class="project-group">
-                <h2 class="org-title">AllTown</h2>
-                <div class="videos-grid">
-                    <div class="video-card">
-                        <div class="video-iframe-container">
-                            <iframe
-                                src="https://player.vimeo.com/video/332275547?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="Lunch-Time">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Lunch Time</h3>
-                            <a href="https://vimeo.com/332275547" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+        <!-- 4. Breakfast Menu Board 4 Screen -->
+        <div class="project-group">
+            <h2 class="org-title">Breakfast Menu Board — 4 Screen</h2>
+            <div class="videos-grid-1">
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332277737?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Breakfast Menu Board — 4 Screen','ratio-wide-4')">
+                    <div class="video-thumb ratio-wide-4">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332277737.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
                     </div>
-
-                    <div class="video-card">
-                        <div class="video-iframe-container">
-                            <iframe
-                                src="https://player.vimeo.com/video/332279462?badge=0&autopause=0&player_id=0&app_id=58479"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                title="Philly Pretzel Factory">
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Pretzel Factory</h3>
-                            <a href="https://vimeo.com/332279462" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
-                        </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Breakfast Menu Board</h3>
+                        <span class="video-meta">4-Screen Layout</span>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </section>
-    </main>
+        <!-- 5. Protein Menu Board 4 Screen -->
+        <div class="project-group">
+            <h2 class="org-title">Protein Menu Board — 4 Screen</h2>
+            <div class="videos-grid-1">
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332277046?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Protein Menu Board — 4 Screen','ratio-wide-4')">
+                    <div class="video-thumb ratio-wide-4">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332277046.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Protein Menu Board</h3>
+                        <span class="video-meta">4-Screen Layout</span>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 Big House Partners. All rights reserved.</p>
-    </footer>
+        <!-- 6. Additional Spots: Lunch Time & Roast-to-Brew Single Screen -->
+        <div class="project-group">
+            <h2 class="org-title">Additional Spots</h2>
+            <div class="videos-grid-2">
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332275547?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Lunch Time','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332275547.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Lunch Time</h3>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332276581?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Roast-to-Brew — Single Screen','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332276581.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Roast-to-Brew</h3>
+                        <span class="video-meta">Single Screen</span>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
+
+                <!-- Donuts Love Coffee & Good Morning -->
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332276387?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Donuts Love Coffee','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332276387.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Donuts Love Coffee</h3>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332275884?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Good Morning','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332275884.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Good Morning</h3>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
+
+                <!-- Pretzel Factory & Logan's Director Cut -->
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332279462?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Pretzel Factory','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332279462.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Pretzel Factory</h3>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="openLightbox('https://player.vimeo.com/video/332275396?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Logan\'s Director Cut','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332275396.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Logan's Director Cut</h3>
+                        <span class="expand-hint">▶ Click to watch fullscreen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Big House Partners. All rights reserved.</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="handleOverlayClick(event)">
+    <div class="lightbox-inner">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+        <div class="lightbox-frame" id="lightboxFrame"></div>
+        <div class="lightbox-title" id="lightboxTitle"></div>
+    </div>
+</div>
+
+<script>
+    const ratioMap = {
+        'ratio-16x9':   56.25,
+        'ratio-wide-2': 27.76,
+        'ratio-wide-3': 18.47,
+        'ratio-wide-4': 13.82
+    };
+
+    function openLightbox(src, title, ratioClass) {
+        const overlay = document.getElementById('lightbox');
+        const frame   = document.getElementById('lightboxFrame');
+        const label   = document.getElementById('lightboxTitle');
+
+        const pb = ratioMap[ratioClass] || 56.25;
+        frame.style.paddingBottom = pb + '%';
+
+        frame.innerHTML = `<iframe
+            src="${src}"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>`;
+
+        label.textContent = title;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.getElementById('lightboxFrame').innerHTML = '';
+        document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+        if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
 </body>
 </html>
