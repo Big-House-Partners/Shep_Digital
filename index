@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Portfolio</title>
+    <style>
+        :root {
+            --primary: #0f1419;
+            --secondary: #1a2332;
+            --accent: #e8e8e8;
+            --accent-subtle: #8b8b8b;
+            --highlight: #ffffff;
+            --border: #2d3744;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--primary);
+            color: var(--accent);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 2rem 2rem 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInLogo 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInLogo {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--highlight);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-subtle);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .projects {
+            display: grid;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-group {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-group:nth-child(1) { animation-delay: 0.1s; }
+        .project-group:nth-child(2) { animation-delay: 0.2s; }
+        .project-group:nth-child(3) { animation-delay: 0.3s; }
+        .project-group:nth-child(4) { animation-delay: 0.4s; }
+        .project-group:nth-child(5) { animation-delay: 0.5s; }
+        .project-group:nth-child(6) { animation-delay: 0.6s; }
+
+        .org-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .single-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .video-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .video-card:hover {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--secondary) 0%, rgba(255, 255, 255, 0.02) 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-iframe-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--primary);
+        }
+
+        /* Custom aspect ratios for wide/multi-screen formats */
+        .video-iframe-container.ratio-18 { padding-bottom: 18.47%; }
+        .video-iframe-container.ratio-27 { padding-bottom: 27.76%; }
+        .video-iframe-container.ratio-13 { padding-bottom: 13.82%; }
+
+        .video-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .video-link {
+            color: var(--accent-subtle);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            transition: color 0.3s;
+            display: inline-block;
+        }
+
+        .video-link:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .videos-grid,
+            .two-column-feature {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-group {
+                margin-bottom: 2rem;
+            }
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--accent-subtle);
+            font-size: 0.9rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-subtle);
+        }
+
+        .two-column-feature {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://res.cloudinary.com/dvltssfeh/image/upload/v1767042498/BigHouse_K_gwkjgu.jpg" alt="Big House Logo" class="logo">
+        <h1>Big House Recent Work</h1>
+    </header>
+
+    <main>
+        <section class="projects">
+
+            <!-- Flatbreads -->
+            <div class="project-group">
+                <h2 class="org-title">Flatbreads</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-iframe-container ratio-18">
+                            <iframe
+                                src="https://player.vimeo.com/video/1142678908?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="Ashburnham_Flatbreads_3Screen_Bevel">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Flatbreads – 3 Screen</h3>
+                            <a href="https://vimeo.com/1142678908" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-iframe-container ratio-27">
+                            <iframe
+                                src="https://player.vimeo.com/video/1142678932?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="Alltown_Flatbreads_Menu_Board_2 Screen">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Flatbreads – 2 Screen</h3>
+                            <a href="https://vimeo.com/1142678932" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roast-to-Brew -->
+            <div class="project-group">
+                <h2 class="org-title">Roast-to-Brew</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-iframe-container">
+                            <iframe
+                                src="https://player.vimeo.com/video/332276581?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="Roast-to-Brew">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Roast-to-Brew</h3>
+                            <a href="https://vimeo.com/332276581" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-iframe-container ratio-27">
+                            <iframe
+                                src="https://player.vimeo.com/video/332276817?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="AllTown Coffee Menu Board 2 Screen">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Roast-to-Brew – 2 Screen</h3>
+                            <a href="https://vimeo.com/332276817" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AllTown Menu Boards -->
+            <div class="project-group">
+                <h2 class="org-title">AllTown Menu Boards</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-iframe-container ratio-13">
+                            <iframe
+                                src="https://player.vimeo.com/video/332277737?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="AllTown Breakfast Menu Board 4Screen">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Breakfast Menu Board</h3>
+                            <a href="https://vimeo.com/332277737" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-iframe-container ratio-13">
+                            <iframe
+                                src="https://player.vimeo.com/video/332277046?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="AllTown Protein Menu Board 4 screens">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Protein Menu Board – 4 Screens</h3>
+                            <a href="https://vimeo.com/332277046" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lunch Time & Pretzel Factory -->
+            <div class="project-group">
+                <h2 class="org-title">AllTown</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-iframe-container">
+                            <iframe
+                                src="https://player.vimeo.com/video/332275547?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="Lunch-Time">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Lunch Time</h3>
+                            <a href="https://vimeo.com/332275547" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-iframe-container">
+                            <iframe
+                                src="https://player.vimeo.com/video/332279462?badge=0&autopause=0&player_id=0&app_id=58479"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="Philly Pretzel Factory">
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Pretzel Factory</h3>
+                            <a href="https://vimeo.com/332279462" target="_blank" rel="noopener noreferrer" class="video-link">Watch on Vimeo →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Big House Partners. All rights reserved.</p>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>
