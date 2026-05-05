@@ -155,7 +155,6 @@
             color: var(--muted);
         }
 
-        /* ── VIDEO GRIDS ── */
         .videos-grid-1 { display: grid; grid-template-columns: 1fr; }
         .videos-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
@@ -182,8 +181,7 @@
 
         .thumb-inner img {
             width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
+            object-fit: cover; display: block;
             transition: transform 0.4s ease, opacity 0.3s ease;
         }
 
@@ -191,242 +189,155 @@
 
         .play-btn {
             position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 2;
+            display: flex; align-items: center; justify-content: center; z-index: 2;
         }
 
         .play-btn svg {
             width: 52px; height: 52px;
             filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
-            transition: transform 0.2s, opacity 0.2s;
-            opacity: 0.7;
+            transition: transform 0.2s, opacity 0.2s; opacity: 0.7;
         }
 
         .video-card:hover .play-btn svg { transform: scale(1.12); opacity: 1; }
 
         .video-info {
-            padding: 1rem 1.25rem 1.1rem;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
+            padding: 1rem 1.25rem 1.1rem; flex-grow: 1;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
         }
 
         .video-title {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--ink);
+            font-size: 0.95rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink);
         }
 
         .video-meta {
-            font-size: 0.72rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 0.15rem;
+            font-size: 0.72rem; color: var(--muted);
+            text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.15rem;
         }
 
         .play-label {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--red);
-            white-space: nowrap;
-            flex-shrink: 0;
-            opacity: 0;
-            transition: opacity 0.2s;
+            font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--red); white-space: nowrap; flex-shrink: 0;
+            opacity: 0; transition: opacity 0.2s;
         }
 
         .video-card:hover .play-label { opacity: 1; }
 
         /* ── POS GRID ── */
-        .pos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
+        .pos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
         .pos-card {
-            border: 1px solid var(--rule);
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            background: var(--white);
+            border: 1px solid var(--rule); overflow: hidden; cursor: pointer;
+            display: flex; flex-direction: column;
+            transition: border-color 0.2s, box-shadow 0.2s; background: var(--white);
         }
 
         .pos-card:hover { border-color: var(--ink); box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 
         .pos-thumb {
-            position: relative;
-            overflow: hidden;
-            background: #f0eeea;
-            /* fixed height so cards show even if image is slow/missing */
-            height: 220px;
+            position: relative; overflow: hidden;
+            background: #f0eeea; height: 220px;
         }
 
         .pos-thumb img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top; display: block;
             transition: transform 0.4s ease, opacity 0.3s ease;
         }
 
         .pos-card:hover .pos-thumb img { transform: scale(1.04); opacity: 0.88; }
 
         .pos-zoom {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.2s;
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2; opacity: 0; transition: opacity 0.2s;
         }
 
         .pos-card:hover .pos-zoom { opacity: 1; }
-
         .pos-zoom svg { width: 40px; height: 40px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
 
         .pos-info {
             padding: 0.85rem 1rem 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
             border-top: 1px solid var(--rule);
         }
 
         .pos-title {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--ink);
+            font-size: 0.88rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink);
         }
 
         .pos-view {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--red);
-            white-space: nowrap;
-            flex-shrink: 0;
-            opacity: 0;
-            transition: opacity 0.2s;
+            font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--red); white-space: nowrap; flex-shrink: 0;
+            opacity: 0; transition: opacity 0.2s;
         }
 
         .pos-card:hover .pos-view { opacity: 1; }
 
         /* ── LIGHTBOX ── */
         .lightbox-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.88);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 2.5rem;
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.88); z-index: 9999;
+            align-items: center; justify-content: center; padding: 2.5rem;
         }
 
         .lightbox-overlay.active { display: flex; animation: lbFade 0.18s ease; }
-
         @keyframes lbFade { from { opacity:0; } to { opacity:1; } }
 
         .lightbox-inner { position: relative; width: 100%; max-width: 1280px; }
 
         .lightbox-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;
         }
 
         .lightbox-label {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45);
         }
 
         .lightbox-close {
-            background: none;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.7);
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            padding: 0.35rem 0.8rem;
+            background: none; border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7); font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; cursor: pointer; padding: 0.35rem 0.8rem;
             transition: border-color 0.2s, color 0.2s;
         }
 
         .lightbox-close:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
 
         .lightbox-frame { position: relative; width: 100%; background: #000; height: 0; }
-
-        .lightbox-frame iframe {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; border: none;
-        }
+        .lightbox-frame iframe { position: absolute; top:0; left:0; width:100%; height:100%; border:none; }
 
         .lightbox-img-wrap { display: none; width: 100%; text-align: center; }
-
-        .lightbox-img-wrap img {
-            max-width: 100%;
-            max-height: 82vh;
-            object-fit: contain;
-            display: inline-block;
-        }
+        .lightbox-img-wrap img { max-width: 100%; max-height: 82vh; object-fit: contain; display: inline-block; }
 
         /* ── FOOTER ── */
         footer {
-            background: var(--ink);
-            padding: 2.5rem 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
+            background: var(--ink); padding: 2.5rem 4rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
         }
 
         .footer-logo { height: 28px; width: auto; opacity: 0.9; }
 
         footer p {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: rgba(255,255,255,0.4);
         }
 
         .footer-location {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--red);
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--red);
         }
 
         /* ── RESPONSIVE ── */
@@ -449,7 +360,8 @@
 
 <header>
     <div class="header-left">
-        <img src="BHP_logo_Black.png" alt="Big House Partners" class="logo">
+        <!-- exact filename: "BHP logo_Black.png" — space between BHP and logo -->
+        <img src="BHP%20logo_Black.png" alt="Big House Partners" class="logo">
         <div class="header-divider"></div>
         <div class="header-text">
             <h1>Shep Digital</h1>
@@ -587,10 +499,7 @@
                         <div class="thumb-inner"><img src="https://vumbnail.com/332275547.jpg" alt="" onerror="this.style.opacity=0"></div>
                         <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
                     </div>
-                    <div class="video-info">
-                        <div><div class="video-title">Lunch Time</div></div>
-                        <div class="play-label">▶ Play</div>
-                    </div>
+                    <div class="video-info"><div><div class="video-title">Lunch Time</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332276581?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Roast-to-Brew — Single Screen','ratio-16x9')">
@@ -598,10 +507,7 @@
                         <div class="thumb-inner"><img src="https://vumbnail.com/332276581.jpg" alt="" onerror="this.style.opacity=0"></div>
                         <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
                     </div>
-                    <div class="video-info">
-                        <div><div class="video-title">Roast-to-Brew</div><div class="video-meta">Single Screen</div></div>
-                        <div class="play-label">▶ Play</div>
-                    </div>
+                    <div class="video-info"><div><div class="video-title">Roast-to-Brew</div><div class="video-meta">Single Screen</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332276387?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Donuts Love Coffee','ratio-16x9')">
@@ -609,10 +515,7 @@
                         <div class="thumb-inner"><img src="https://vumbnail.com/332276387.jpg" alt="" onerror="this.style.opacity=0"></div>
                         <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
                     </div>
-                    <div class="video-info">
-                        <div><div class="video-title">Donuts Love Coffee</div></div>
-                        <div class="play-label">▶ Play</div>
-                    </div>
+                    <div class="video-info"><div><div class="video-title">Donuts Love Coffee</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332275884?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Good Morning','ratio-16x9')">
@@ -620,10 +523,7 @@
                         <div class="thumb-inner"><img src="https://vumbnail.com/332275884.jpg" alt="" onerror="this.style.opacity=0"></div>
                         <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
                     </div>
-                    <div class="video-info">
-                        <div><div class="video-title">Good Morning</div></div>
-                        <div class="play-label">▶ Play</div>
-                    </div>
+                    <div class="video-info"><div><div class="video-title">Good Morning</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332279462?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Pretzel Factory','ratio-16x9')">
@@ -631,10 +531,7 @@
                         <div class="thumb-inner"><img src="https://vumbnail.com/332279462.jpg" alt="" onerror="this.style.opacity=0"></div>
                         <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
                     </div>
-                    <div class="video-info">
-                        <div><div class="video-title">Pretzel Factory</div></div>
-                        <div class="play-label">▶ Play</div>
-                    </div>
+                    <div class="video-info"><div><div class="video-title">Pretzel Factory</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332275396?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Logan\'s Director Cut','ratio-16x9')">
@@ -642,10 +539,7 @@
                         <div class="thumb-inner"><img src="https://vumbnail.com/332275396.jpg" alt="" onerror="this.style.opacity=0"></div>
                         <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
                     </div>
-                    <div class="video-info">
-                        <div><div class="video-title">Logan's Director Cut</div></div>
-                        <div class="play-label">▶ Play</div>
-                    </div>
+                    <div class="video-info"><div><div class="video-title">Logan's Director Cut</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
             </div>
@@ -675,6 +569,7 @@
                     <div class="pos-info"><div class="pos-title">Chilis</div><div class="pos-view">View</div></div>
                 </div>
 
+                <!-- repo filename: "Coffee Top Off.png" -->
                 <div class="pos-card" onclick="openImage('Coffee%20Top%20Off.png','Coffee Top Off')">
                     <div class="pos-thumb">
                         <img src="Coffee%20Top%20Off.png" alt="Coffee Top Off">
@@ -753,8 +648,9 @@
     </section>
 </main>
 
+<!-- footer: "BHP Logo_White.png" — capital L -->
 <footer>
-    <img src="BHP_Logo_White.png" alt="Big House Partners" class="footer-logo">
+    <img src="BHP%20Logo_White.png" alt="Big House Partners" class="footer-logo">
     <p>&copy; 2026 Big House Partners. All rights reserved.</p>
     <span class="footer-location">Based in New England — Available Everywhere</span>
 </footer>
@@ -819,7 +715,6 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    // Active nav on scroll
     const sections = document.querySelectorAll('.project-group[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     const navHeight = document.getElementById('sectionNav').offsetHeight;
