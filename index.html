@@ -28,7 +28,7 @@
 
         /* ── HEADER ── */
         header {
-            background: var(--white);
+            background: var(--ink);
             border-bottom: 1px solid var(--rule);
             padding: 2rem 4rem;
             display: flex;
@@ -37,8 +37,8 @@
         }
 
         .header-left { display: flex; align-items: center; gap: 1.75rem; }
-        .logo { height: 44px; width: auto; display: block; }
-        .header-divider { width: 1px; height: 36px; background: var(--rule); }
+        .logo { height: 52px; width: auto; display: block; }
+        .header-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.2); }
 
         .header-text h1 {
             font-family: 'Barlow Condensed', sans-serif;
@@ -46,13 +46,13 @@
             font-size: 1.25rem;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: var(--ink);
+            color: var(--white);
             line-height: 1.1;
         }
 
         .header-text p {
             font-size: 0.75rem;
-            color: var(--muted);
+            color: rgba(255,255,255,0.5);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 0.25rem;
@@ -445,16 +445,17 @@
 
         /* ── FOOTER ── */
         footer {
-            background: var(--ink); padding: 2.5rem 4rem;
+            background: var(--white); padding: 2.5rem 4rem;
+            border-top: 1px solid var(--rule);
             display: flex; align-items: center; justify-content: space-between; gap: 1rem;
         }
 
-        .footer-logo { height: 28px; width: auto; opacity: 0.9; }
+        .footer-logo { height: 34px; width: auto; opacity: 0.9; }
 
         footer p {
             font-family: 'Barlow Condensed', sans-serif;
             font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; color: rgba(255,255,255,0.4);
+            text-transform: uppercase; color: var(--muted);
         }
 
         .footer-location {
@@ -483,7 +484,7 @@
 
 <header>
     <div class="header-left">
-        <img src="BHP%20logo_Black.png" alt="Big House Partners" class="logo">
+        <img src="BHP%20Logo_White.png" alt="Big House Partners" class="logo">
         <div class="header-divider"></div>
         <div class="header-text">
             <h1>Shep Digital</h1>
@@ -713,6 +714,7 @@
         <div class="project-group" id="point-of-sale">
             <div class="group-header">
                 <h2 class="org-title">Point of Sale Assets</h2>
+                <span class="org-count">11 Assets</span>
             </div>
             <div class="pos-grid">
 
@@ -811,7 +813,7 @@
 </main>
 
 <footer>
-    <img src="BHP%20Logo_White.png" alt="Big House Partners" class="footer-logo">
+    <img src="BHP%20logo_Black.png" alt="Big House Partners" class="footer-logo">
     <p>&copy; 2026 Big House Partners. All rights reserved.</p>
     <span class="footer-location">Based in New England — Available Everywhere</span>
 </footer>
