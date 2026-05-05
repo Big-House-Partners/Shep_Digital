@@ -69,6 +69,129 @@
 
         .red-rule { height: 3px; background: var(--red); }
 
+        /* ── WHO WE ARE INTRO ── */
+        .who-we-are {
+            background: #f7f6f4;
+            border-bottom: 1px solid var(--rule);
+            padding: 2.5rem 4rem;
+        }
+
+        .wwa-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .wwa-eyebrow {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 0.75rem;
+        }
+
+        .wwa-teaser {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .wwa-teaser-text {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--ink);
+            line-height: 1.25;
+            max-width: 720px;
+        }
+
+        .wwa-toggle {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink);
+            background: none;
+            border: 1px solid var(--ink);
+            cursor: pointer;
+            padding: 0.4rem 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.18s, color 0.18s;
+        }
+
+        .wwa-toggle:hover {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+        .wwa-toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-style: normal;
+        }
+
+        .wwa-toggle.open .wwa-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Expanded panel */
+        .wwa-expanded {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+            opacity: 0;
+        }
+
+        .wwa-expanded.open {
+            max-height: 600px;
+            opacity: 1;
+        }
+
+        .wwa-expanded-inner {
+            padding-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2.5rem;
+            border-top: 1px solid var(--rule);
+            margin-top: 1.5rem;
+        }
+
+        .wwa-col-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 0.6rem;
+        }
+
+        .wwa-col-body {
+            font-size: 0.875rem;
+            color: #444;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 900px) {
+            .who-we-are { padding: 2rem 2rem; }
+            .wwa-teaser { flex-direction: column; gap: 1.25rem; align-items: flex-start; }
+            .wwa-expanded-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .who-we-are { padding: 1.75rem 1.25rem; }
+            .wwa-teaser-text { font-size: 1.15rem; }
+        }
+
         /* ── STICKY NAV ── */
         .section-nav {
             position: sticky;
@@ -360,7 +483,6 @@
 
 <header>
     <div class="header-left">
-        <!-- exact filename: "BHP logo_Black.png" — space between BHP and logo -->
         <img src="BHP%20logo_Black.png" alt="Big House Partners" class="logo">
         <div class="header-divider"></div>
         <div class="header-text">
@@ -371,6 +493,35 @@
 </header>
 
 <div class="red-rule"></div>
+
+<!-- ── WHO WE ARE ── -->
+<div class="who-we-are">
+    <div class="wwa-inner">
+        <div class="wwa-eyebrow">Who We Are</div>
+        <div class="wwa-teaser">
+            <p class="wwa-teaser-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button class="wwa-toggle" id="wwaToggle" onclick="toggleWWA()">
+                About Us <span class="wwa-toggle-arrow">↓</span>
+            </button>
+        </div>
+        <div class="wwa-expanded" id="wwaExpanded">
+            <div class="wwa-expanded-inner">
+                <div>
+                    <div class="wwa-col-label">Our Story</div>
+                    <p class="wwa-col-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+                </div>
+                <div>
+                    <div class="wwa-col-label">Our Approach</div>
+                    <p class="wwa-col-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>
+                </div>
+                <div>
+                    <div class="wwa-col-label">Our Work</div>
+                    <p class="wwa-col-body">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <nav class="section-nav" id="sectionNav">
     <a class="nav-link" href="#flatbreads-3">Flatbreads 3-Screen</a>
@@ -487,6 +638,41 @@
             </div>
             <div class="videos-grid-2">
 
+                <!-- Row 1: Donuts Love Coffee + New Dunkin' spot -->
+                <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332276387?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Donuts Love Coffee','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332276387.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info"><div><div class="video-title">Donuts Love Coffee</div></div><div class="play-label">▶ Play</div></div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/58144628?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Dunkin\' Donuts','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/58144628.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info"><div><div class="video-title">Dunkin' Donuts</div></div><div class="play-label">▶ Play</div></div>
+                </div>
+
+                <!-- Row 2: New Subway spot + Good Morning -->
+                <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/Uy4DYfRpwxc?autoplay=1&si=iYMcyto3Fnlpy12Z','Subway','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://img.youtube.com/vi/Uy4DYfRpwxc/maxresdefault.jpg" alt="" onerror="this.src='https://img.youtube.com/vi/Uy4DYfRpwxc/0.jpg'"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info"><div><div class="video-title">Subway</div></div><div class="play-label">▶ Play</div></div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332275884?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Good Morning','ratio-16x9')">
+                    <div class="video-thumb ratio-16x9">
+                        <div class="thumb-inner"><img src="https://vumbnail.com/332275884.jpg" alt="" onerror="this.style.opacity=0"></div>
+                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
+                    </div>
+                    <div class="video-info"><div><div class="video-title">Good Morning</div></div><div class="play-label">▶ Play</div></div>
+                </div>
+
+                <!-- Row 3: Lunch Time + Roast-to-Brew Single -->
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332275547?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Lunch Time','ratio-16x9')">
                     <div class="video-thumb ratio-16x9">
                         <div class="thumb-inner"><img src="https://vumbnail.com/332275547.jpg" alt="" onerror="this.style.opacity=0"></div>
@@ -503,22 +689,7 @@
                     <div class="video-info"><div><div class="video-title">Roast-to-Brew</div><div class="video-meta">Single Screen</div></div><div class="play-label">▶ Play</div></div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332276387?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Donuts Love Coffee','ratio-16x9')">
-                    <div class="video-thumb ratio-16x9">
-                        <div class="thumb-inner"><img src="https://vumbnail.com/332276387.jpg" alt="" onerror="this.style.opacity=0"></div>
-                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
-                    </div>
-                    <div class="video-info"><div><div class="video-title">Donuts Love Coffee</div></div><div class="play-label">▶ Play</div></div>
-                </div>
-
-                <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332275884?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Good Morning','ratio-16x9')">
-                    <div class="video-thumb ratio-16x9">
-                        <div class="thumb-inner"><img src="https://vumbnail.com/332275884.jpg" alt="" onerror="this.style.opacity=0"></div>
-                        <div class="play-btn"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><polygon points="33,26 58,40 33,54" fill="white"/></svg></div>
-                    </div>
-                    <div class="video-info"><div><div class="video-title">Good Morning</div></div><div class="play-label">▶ Play</div></div>
-                </div>
-
+                <!-- Row 4: Pretzel Factory + Logan's Director Cut -->
                 <div class="video-card" onclick="openVideo('https://player.vimeo.com/video/332279462?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479','Pretzel Factory','ratio-16x9')">
                     <div class="video-thumb ratio-16x9">
                         <div class="thumb-inner"><img src="https://vumbnail.com/332279462.jpg" alt="" onerror="this.style.opacity=0"></div>
@@ -562,7 +733,6 @@
                     <div class="pos-info"><div class="pos-title">Chilis</div><div class="pos-view">View</div></div>
                 </div>
 
-                <!-- repo filename: "Coffee Top Off.png" -->
                 <div class="pos-card" onclick="openImage('Coffee%20Top%20Off.png','Coffee Top Off')">
                     <div class="pos-thumb">
                         <img src="Coffee%20Top%20Off.png" alt="Coffee Top Off">
@@ -641,7 +811,6 @@
     </section>
 </main>
 
-<!-- footer: "BHP Logo_White.png" — capital L -->
 <footer>
     <img src="BHP%20Logo_White.png" alt="Big House Partners" class="footer-logo">
     <p>&copy; 2026 Big House Partners. All rights reserved.</p>
@@ -662,6 +831,17 @@
 </div>
 
 <script>
+    /* ── WHO WE ARE TOGGLE ── */
+    function toggleWWA() {
+        const expanded = document.getElementById('wwaExpanded');
+        const toggle = document.getElementById('wwaToggle');
+        const isOpen = expanded.classList.contains('open');
+        expanded.classList.toggle('open', !isOpen);
+        toggle.classList.toggle('open', !isOpen);
+        toggle.querySelector('.wwa-toggle-arrow').textContent = isOpen ? '↓' : '↑';
+    }
+
+    /* ── LIGHTBOX ── */
     const ratioMap = {
         'ratio-16x9':   56.25,
         'ratio-wide-2': 27.76,
@@ -708,6 +888,7 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+    /* ── STICKY NAV ── */
     const sections = document.querySelectorAll('.project-group[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     const navHeight = document.getElementById('sectionNav').offsetHeight;
