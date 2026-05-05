@@ -152,7 +152,7 @@
         }
 
         .wwa-expanded.open {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
         }
 
@@ -179,6 +179,29 @@
             font-size: 0.875rem;
             color: #444;
             line-height: 1.65;
+        }
+
+        /* Logo grid inside Who We've Worked With */
+        .wwa-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem 1rem;
+            align-items: center;
+        }
+
+        .wwa-logo-grid img {
+            width: 100%;
+            height: 28px;
+            object-fit: contain;
+            object-position: left center;
+            filter: grayscale(100%) brightness(0);
+            opacity: 0.55;
+            transition: opacity 0.2s;
+            display: block;
+        }
+
+        .wwa-logo-grid img:hover {
+            opacity: 0.85;
         }
 
         @media (max-width: 900px) {
@@ -499,7 +522,7 @@
     <div class="wwa-inner">
         <div class="wwa-eyebrow">Who We Are</div>
         <div class="wwa-teaser">
-            <p class="wwa-teaser-text">In partnership with Shep Digital, Big House brings creative development and production expertise to the convenience retail space, with a focus on high-impact tabletop and content that performs.</p>
+            <p class="wwa-teaser-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <button class="wwa-toggle" id="wwaToggle" onclick="toggleWWA()">
                 About Us <span class="wwa-toggle-arrow">↓</span>
             </button>
@@ -508,15 +531,31 @@
             <div class="wwa-expanded-inner">
                 <div>
                     <div class="wwa-col-label">Our Story</div>
-                    <p class="wwa-col-body">Big House Partners was built by people who spent decades inside the biggest agencies in the business and got tired of watching great ideas get buried under layers, overhead, and handoffs. So we stripped all of that out. What's left is senior talent, moving fast, fully invested in your work.</p>
+                    <p class="wwa-col-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
                 </div>
                 <div>
                     <div class="wwa-col-label">Our Approach</div>
-                    <p class="wwa-col-body">Every engagement starts with the goal, not the deliverable. We build the right team for that specific job, scope it tight, price it clearly, and execute with the same craft you'd expect from a major agency. No bloat. No surprises. Just work that moves the needle.</p>
+                    <p class="wwa-col-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>
                 </div>
                 <div>
-                    <div class="wwa-col-label">Our Work</div>
-                    <p class="wwa-col-body">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                    <div class="wwa-col-label">Who We've Worked With</div>
+                    <div class="wwa-logo-grid">
+                        <img src="Dunkin_logo.png"              alt="Dunkin'">
+                        <img src="Subway1_logo.png"             alt="Subway">
+                        <img src="Chili's_logo.svg"             alt="Chili's">
+                        <img src="Stop_%26_Shop_logo.png"       alt="Stop & Shop">
+                        <img src="Hannaford_logo.svg"           alt="Hannaford">
+                        <img src="Cumberland_logo.svg"          alt="Cumberland Farms">
+                        <img src="Boston_Market_logo.png"       alt="Boston Market">
+                        <img src="Friendly's_logo.png"          alt="Friendly's">
+                        <img src="O'Charlies_logo.png"          alt="O'Charley's">
+                        <img src="Papa_Gino's_logo.png"         alt="Papa Gino's">
+                        <img src="Phillypretzels_logo.jpg"      alt="Philly Pretzels">
+                        <img src="Logan's_Roadhouse_logo.png"   alt="Logan's Roadhouse">
+                        <img src="Alltown_logo.jpg"             alt="Alltown">
+                        <img src="carrabbas_logo.svg"           alt="Carrabba's">
+                        <img src="dangelo_logo.svg"             alt="D'Angelo">
+                    </div>
                 </div>
             </div>
         </div>
