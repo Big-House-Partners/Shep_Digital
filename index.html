@@ -153,7 +153,7 @@
         }
 
         .wwa-expanded.open {
-            max-height: 500px;
+            max-height: 900px;
             opacity: 1;
         }
 
@@ -491,6 +491,74 @@
             main { padding: 2.5rem 1.25rem 4rem; }
             .pos-grid { grid-template-columns: 1fr; }
         }
+
+        /* ── HAMBURGER MENU ── */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 200;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.25s ease;
+            transform-origin: center;
+        }
+
+        .hamburger-btn.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 900px) {
+            .hamburger-btn { display: flex; }
+
+            .section-nav {
+                position: static;
+                flex-direction: column;
+                height: auto;
+                max-height: 0;
+                overflow: hidden;
+                padding: 0 2rem;
+                border-bottom: none;
+                transition: max-height 0.35s ease, padding 0.35s ease;
+            }
+
+            .section-nav.open {
+                max-height: 600px;
+                padding: 0.5rem 2rem 1rem;
+                border-bottom: 1px solid var(--rule);
+            }
+
+            .nav-link {
+                height: auto;
+                padding: 0.65rem 0;
+                border-bottom: 1px solid var(--rule);
+                width: 100%;
+            }
+
+            .nav-link:last-of-type {
+                border-bottom: none;
+            }
+
+            .nav-divider { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -505,6 +573,11 @@
         </div>
     </div>
     <span class="header-tag">Client Preview</span>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleHamburger()" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 </header>
 
 <div class="red-rule"></div>
@@ -929,6 +1002,22 @@
                 const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 32;
                 window.scrollTo({ top, behavior: 'smooth' });
             }
+        });
+    });
+
+    /* ── HAMBURGER MENU ── */
+    function toggleHamburger() {
+        const btn = document.getElementById('hamburgerBtn');
+        const nav = document.getElementById('sectionNav');
+        btn.classList.toggle('open');
+        nav.classList.toggle('open');
+    }
+
+    // Close menu when a nav link is tapped on mobile
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('hamburgerBtn').classList.remove('open');
+            document.getElementById('sectionNav').classList.remove('open');
         });
     });
 </script>
