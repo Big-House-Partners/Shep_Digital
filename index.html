@@ -530,14 +530,20 @@
             .hamburger-btn { display: flex; }
 
             .section-nav {
-                position: static;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
                 flex-direction: column;
                 height: auto;
                 max-height: 0;
                 overflow: hidden;
                 padding: 0 2rem;
                 border-bottom: none;
+                background: var(--white);
+                z-index: 150;
                 transition: max-height 0.35s ease, padding 0.35s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             }
 
             .section-nav.open {
